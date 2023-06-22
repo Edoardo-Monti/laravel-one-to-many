@@ -15,4 +15,9 @@ class Post extends Model
         "description",
         "slug"
     ];
+
+
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
 }

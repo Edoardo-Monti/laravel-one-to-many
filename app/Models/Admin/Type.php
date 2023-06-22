@@ -10,4 +10,9 @@ class Type extends Model
     use HasFactory;
 
     protected $table = 'types';
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
 }
