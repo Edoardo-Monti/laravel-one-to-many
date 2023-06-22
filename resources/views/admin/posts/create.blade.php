@@ -28,6 +28,19 @@
                 <div class="alert alert-danger">{{$message}}</div>
             @enderror
         </div>
+        <div class="form-group">
+            <label for="type" class="form-label">Types</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type">
+                <option value="">- - Scegli Un Type - - </option>
+                @foreach ($types as $elem)
+                    <option value="{{$elem->id}}">{{$elem->name}}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
+        </div>
+
         
     
         <button type="submit" class="btn btn-primary">Crea Fumetto</button>

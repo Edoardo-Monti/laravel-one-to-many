@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Post;
 use Illuminate\Http\Request;
+use App\Models\Admin\Type;
 
 class PostController extends Controller
 {
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $types = Type::all();
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -43,7 +45,8 @@ class PostController extends Controller
             [
                 'title' => 'required|max:255',
                 'description' => 'required|min:10',
-                'slug' => 'required'
+                'slug' => 'required',
+                'type' => 'nullable|exists:types,id'
                 
             ],
             [
@@ -85,7 +88,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $types = Type::all();
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
     /**
