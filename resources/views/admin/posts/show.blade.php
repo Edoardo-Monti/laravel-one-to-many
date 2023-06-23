@@ -6,9 +6,11 @@
     <div class="card-body">
         <h5 class="card-title">{{ $singoloPost->title }}</h5>
         <p class="card-text">{{$singoloPost->description}}</p>
+        @if ($singoloPost->type)
         <div>
             <p>{{$singoloPost->type->name}}</p>
         </div>
+        @endif
         <a href="{{route('admin.posts.edit', $singoloPost)}}" class="btn btn-primary">Modifica</a>
 
         
